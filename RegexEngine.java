@@ -45,6 +45,15 @@ class RegexEngine
     	{
     		return true;
     	}
+    	
+    	//For $ character
+    	
+    	else if(pattern.equalsIgnoreCase("$")&&text.isEmpty())
+		{
+			return true;
+    	}
+    	
+    	
     	String pTemp = "";
     	String tTemp = "";
     	
