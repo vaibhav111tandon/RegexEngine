@@ -17,7 +17,7 @@ class RegexEngine
         
         //calling the match function
         
-        System.out.println(new RegexEngine().match(pattern,text));
+        System.out.println(new RegexEngine().match(pattern,text)||new RegexEngine().search(pattern,text));
         
     }   
     
@@ -80,5 +80,30 @@ class RegexEngine
     	}
     		return matchThePattern(String.valueOf(pattern.charAt(0)),String.valueOf(text.charAt(0)))&&match(pTemp,tTemp);
     }
+    
+    //	For ^ character
+    
+    boolean search(String pattern,String text)
+    {
+    	String pTemp = "";
+    	if(pattern.charAt(0)=='^')
+    	{
+    		for(int i=0;i<pattern.length();i++){
+    			char ch = pattern.charAt(i);
+    			if(i!=0)
+    			{
+    				pTemp+=ch;
+    			}
+    		}
+    		return match(pTemp,text);
+    	}
+    	
+    	// This means that we test the pattern against every starting point of the text.
+    		
+    		for(int i=0;i<text.length();i++)
+    			return match(pattern,text.substring(i));
+    		return true;
+    }
 
+    
 }
